@@ -144,6 +144,10 @@ android {
 }
 
 dependencies {
+    compile project(':react-native-vector-icons')
+    compile project(':react-native-image-picker')
+    compile project(':react-native-gesture-handler')
+    compile project(':react-native-blur')
     implementation project(':react-native-blur')
     implementation project(':react-native-gesture-handler')
     implementation fileTree(dir: "libs", include: ["*.jar"])

@@ -1,7 +1,6 @@
 import React, { PureComponent } from 'react'
 import { View, StyleSheet } from 'react-native';
 import { Item , Label , Input } from 'native-base'
-import {FormValidationMessage} from 'react-native-elements'
 
 class DefaultInput extends PureComponent{
     _handleChange = value => {
@@ -13,7 +12,7 @@ class DefaultInput extends PureComponent{
       };
     
       render() {
-        const { label, error, ...rest } = this.props;
+        const { label, error,keyboardType, ...rest } = this.props;
         return (
           <View style={styles.root}>
             <Item floatingLabel>
@@ -21,6 +20,7 @@ class DefaultInput extends PureComponent{
                 <Input
                     onChangeText = {this._handleChange}
                     onBlur = {this._handleTouch}
+                    keyboardType = {keyboardType}
                     {...rest}
                 />
                 {/* {error && <FormValidationMessage>{error}</FormValidationMessage>} */}

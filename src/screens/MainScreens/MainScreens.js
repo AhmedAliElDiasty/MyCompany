@@ -115,3 +115,49 @@ export const Login = ()=>{
         }
       });
 }
+
+export const Signup = ()=>{
+  Navigation.setRoot({
+      root: {
+        stack: {
+          children: [{
+            component: {
+              name: 'test.Signup',
+              passProps: {
+                text: 'stack with one child'
+              }
+            }
+          }],
+          options: {
+            topBar: {
+              title: {
+                text: 'Sign Up'
+              }
+            }
+          }
+        }
+      }
+    });
+}
+
+export const addEmployee = ()=>{
+  Navigation.showModal({
+    stack: {
+      children: [{
+        component: {
+          name: 'test.AddEmployee',
+          passProps: {
+            text: 'stack with one child'
+          },
+          options: {
+            topBar: {
+              title: {
+                text: 'Add Employee'
+              }
+            }
+          }
+        }
+      }]
+    }
+  });
+}

@@ -1,4 +1,4 @@
-import {TRY_AUTH} from './actionType'
+import {TRY_AUTH} from '../ActionType'
 
 export const tryAuth = (AuthData)=>{
     return{

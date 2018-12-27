@@ -45,7 +45,21 @@ class Home extends Component{
         const selItem =  this.props.emp.find(emp=>{
             return key === emp.key;
            })
-           alert(this.props.emp)
+           Navigation.push(this.props.componentId, {
+            component: {
+              name: 'test.ViewEmployee',
+              passProps: {
+                selectedEmp : selItem
+              },
+              options: {
+                topBar: {
+                  title: {
+                    text: selItem.firstName
+                  }
+                }
+              }
+            }
+          });
       
     }
     

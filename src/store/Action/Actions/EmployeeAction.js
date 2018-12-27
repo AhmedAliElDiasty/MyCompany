@@ -1,4 +1,4 @@
-import { ADD_EMPLOYEE , DELETE_EMPLOYEE } from '../ActionType'
+import { ADD_EMPLOYEE } from '../ActionType'
 
 export const addEmployee = (firstName,lastName,salary,phoneNumber,image)=>{
     return{
@@ -11,9 +11,4 @@ export const addEmployee = (firstName,lastName,salary,phoneNumber,image)=>{
     }
 }
 
-export const deleteEmployee = (key)=>{
-    return{
-        type: DELETE_EMPLOYEE,
-        empKey : key
-    }
-}
+

@@ -3,14 +3,7 @@ import { ADD_EMPLOYEE , DELETE_EMPLOYEE } from "../Action/ActionType";
 
 var initializeState = {
     empInfo:[
-        {
-            key:1,
-            firstName:'Ahmed',
-            lastName:'ali',
-            salary: '4000',
-            phoneNumber:'11111111',
-            image:null
-        }
+        
     ],
     
 }
@@ -31,13 +24,7 @@ const employeeReducer = (state = initializeState,action)=>{
                     },
                 })
             }
-        case DELETE_EMPLOYEE:
-            return{
-                ...state,
-                info: state.empInfo.filter(emp=>{
-                    return emp.key!==action.empKey
-                })
-            }
+       
         default:
             return{
                 ...state

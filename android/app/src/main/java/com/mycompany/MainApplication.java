@@ -7,6 +7,10 @@ import com.oblador.vectoricons.VectorIconsPackage;
 import com.imagepicker.ImagePickerPackage;
 import com.swmansion.gesturehandler.react.RNGestureHandlerPackage;
 import com.cmcewen.blurview.BlurViewPackage;
+import com.oblador.vectoricons.VectorIconsPackage;
+import com.imagepicker.ImagePickerPackage;
+import com.swmansion.gesturehandler.react.RNGestureHandlerPackage;
+import com.cmcewen.blurview.BlurViewPackage;
 import com.cmcewen.blurview.BlurViewPackage;
 import com.swmansion.gesturehandler.react.RNGestureHandlerPackage;
 import com.oblador.vectoricons.VectorIconsPackage;
@@ -47,7 +51,9 @@ public class MainApplication extends NavigationApplication {
             // eg. new VectorIconsPackage()
             new VectorIconsPackage(),
             new ImagePickerPackage(),
-            new RNGestureHandlerPackage()
+            new RNGestureHandlerPackage(),
+            new BlurViewPackage()
+
         );
     }
   

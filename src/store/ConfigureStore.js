@@ -1,9 +1,11 @@
 import {createStore, combineReducers , compose, applyMiddleware} from 'redux'
 import thunk from 'redux-thunk'
 import AuthReducer from './Reducers/AuthReducer'
+import EmployeeReducer from './Reducers/EmployeeReducer'
 
 const rootReducer = combineReducers({
     authData:AuthReducer,
+    empData: EmployeeReducer
 });
 
 let composeEnhancer = compose;

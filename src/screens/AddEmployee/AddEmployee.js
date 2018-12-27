@@ -7,6 +7,7 @@ import DefaultInput from '../../DefaultUI/DefaultInput/DefaultInput'
 import { Formik } from 'formik';
 import * as Yup from 'yup';
 import ImagePicker from '../../components/ImagePicker/ImagePicker';
+import {addEmployee} from '../../store/Action/Index'
 
 
 
@@ -33,10 +34,12 @@ class AddEmployee extends Component{
         }
     }
     state = {
+       
         image : {
             value: null,
             valid : false
-        }
+        },
+
     }
     onImagePickHandler = image =>{
         this.setState(prevState=>{
@@ -49,15 +52,29 @@ class AddEmployee extends Component{
             }
         });
     }
-    _handleSubmit = () =>{
-        if(this.state.image.valid!==true){
-            alert('please Enter an image')
+    _handleSubmit = async (values, bag) => {
+        try {
+            if(this.state.image.value===null){
+                alert('please Enter an image')
+            }
+            else{
+                // alert('Welcome')
+                this.props.myEmployee(values.firstName,values.lastName,values.salary,values.phoneNumber,this.state.image.value)
+                Navigation.dismissModal(this.props.componentId)
+            }
+        //   this.props.onLogin(values.email);
+          
+        } catch (error) {
+            console.log(error);
+            
+            alert(error)
+          bag.setSubmitting(false);
+          bag.setErrors(error);
         }
-        else{
-            alert('Welcome')
-        }
-        
     }
+       
+        
+    
     render(){
         const phoneRegExp = /(01)[0-9]{9}/
 
@@ -75,7 +92,7 @@ class AddEmployee extends Component{
                             .required('Salary is required'),
                         phoneNumber:Yup.string().matches(phoneRegExp, 'Phone number is not valid')
                             .required('Phone is required'),
-                        // image: Yup.object().required('Image is required')
+                       
                     })
                 }
                 render = {
@@ -146,7 +163,8 @@ class AddEmployee extends Component{
                                 <CardItem>
                                     <Body>
                                         <ImagePicker
-                                            // onImagePick = {this.onImagePickHandler}
+                                            onImagePick = {this.onImagePickHandler}
+                                            value = {this.state.image.value}
                                          />
                                     </Body>
                                 </CardItem>
@@ -168,7 +186,7 @@ class AddEmployee extends Component{
                            </Card> 
                             <Button block 
                             onPress={handleSubmit}
-                            enabled = {isValid && !isSubmitting}
+                            // enabled = {isValid && !isSubmitting}
                             >
                              <Text style = {styles.buttonText}>Apply</Text>
                         </Button> 
@@ -189,6 +207,9 @@ const styles = StyleSheet.create({
     }
 })
 const mapDispatchToProps = dispatch =>{
+    return{
+        myEmployee : (fname,lname,salary,phone,img) =>dispatch(addEmployee(fname,lname,salary,phone,img))
+    }
 
 }
-export default connect()(AddEmployee);
+export default connect(null,mapDispatchToProps)(AddEmployee);

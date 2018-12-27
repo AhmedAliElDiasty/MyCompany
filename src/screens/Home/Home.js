@@ -2,8 +2,9 @@ import React, { Component } from 'react'
 import {connect} from 'react-redux'
 import {StyleSheet} from 'react-native'
 import {Navigation} from 'react-native-navigation'
-import { Icon, Fab ,View} from 'native-base';
+import { Icon, Fab ,View, Text} from 'native-base';
 import { addEmployee } from '../MainScreens/MainScreens'
+import EmpList from '../../components/ListView/ListView'
 
 class Home extends Component{
     constructor(props) {
@@ -24,9 +25,9 @@ class Home extends Component{
           }
         };
     }
+    
     navigationButtonPressed({ buttonId  }) {
         if(buttonId === 'rightButton'){
-        // (!this.isSideDrawerVisible) ? this.isSideDrawerVisible = true : this.isSideDrawerVisible = false
             Navigation.mergeOptions('SideMenu.left', {
                 sideMenu: {
                     right: {
@@ -34,27 +35,38 @@ class Home extends Component{
                     }
                 }
             });
-            // alert('Hello world')
         }
     }
     _handleAdd = ()=>{
         addEmployee();
     }
+
+    itemSelectedHandler = key =>{
+        const selItem =  this.props.emp.find(emp=>{
+            return key === emp.key;
+           })
+           alert(this.props.emp)
+      
+    }
+    
     render(){
         return(
             <View style={{ flex: 1 }}>
-          <Fab
-            active={this.state.active}
-            direction="up"
-            containerStyle={{ }}
-            style={{ backgroundColor: '#5067FF' }}
-            position="bottomRight"
-            onPress={this._handleAdd}
-            >
-            <Icon name="add" />
             
-          </Fab>
-        </View>
+                <EmpList list = {this.props.emp} onItemSelected = {this.itemSelectedHandler}/>
+            
+                <Fab
+                    active={this.state.active}
+                    direction="up"
+                    containerStyle={{ }}
+                    style={{ backgroundColor: '#5067FF' }}
+                    position="bottomRight"
+                    onPress={this._handleAdd}
+                    >
+                    <Icon name="add" />
+                    
+                </Fab>
+            </View>
         );
     }
 }
@@ -65,5 +77,10 @@ const styles = StyleSheet.create({
         alignItems:'center'
     }
 });
+const mapStateToProps = state =>{
+    return{
+        emp: state.empData.empInfo
+    }
+}
 
-export default connect()(Home);
+export default connect(mapStateToProps)(Home);

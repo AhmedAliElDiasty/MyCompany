@@ -1,10 +1,11 @@
 import React, { Component } from 'react'
 import {connect} from 'react-redux'
-import {StyleSheet} from 'react-native'
+import {StyleSheet, TouchableOpacity} from 'react-native'
 import {Navigation} from 'react-native-navigation'
 import { Icon, Fab ,View, Text} from 'native-base';
 import { addEmployee } from '../MainScreens/MainScreens'
 import EmpList from '../../components/ListView/ListView'
+
 
 class Home extends Component{
     constructor(props) {
@@ -12,22 +13,27 @@ class Home extends Component{
         // this.isSideDrawerVisible = false; 
         Navigation.events().bindComponent(this);
         this.state = {
-            active: 'false'
+            active: 'false',
           };
       }
     static options(passProps) {
         return {
           topBar: {
-            rightButtons: {
-              id: 'rightButton',
+            rightButtons: [{
+              id: 'menu',
               icon: require('../../assets/icon.png')
-            }
+            },
+            {id:'search',
+            icon: require('../../assets/search.png')
+        
+        }
+        ]
           }
         };
     }
     
     navigationButtonPressed({ buttonId  }) {
-        if(buttonId === 'rightButton'){
+        if(buttonId === 'menu'){
             Navigation.mergeOptions('SideMenu.left', {
                 sideMenu: {
                     right: {
@@ -35,6 +41,9 @@ class Home extends Component{
                     }
                 }
             });
+        }
+        else if(buttonId === 'search'){
+            alert('hello')
         }
     }
     _handleAdd = ()=>{
@@ -62,6 +71,7 @@ class Home extends Component{
           });
       
     }
+
     
     render(){
         return(
@@ -84,13 +94,7 @@ class Home extends Component{
         );
     }
 }
-const styles = StyleSheet.create({
-    container:{
-        flex:1,
-        justifyContent:'center',
-        alignItems:'center'
-    }
-});
+
 const mapStateToProps = state =>{
     return{
         emp: state.empData.empInfo

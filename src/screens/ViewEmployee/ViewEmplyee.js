@@ -20,7 +20,7 @@ class ViewEmployee extends Component{
       }
       
     render(){
-        
+        // React-native-fast-image
         return(
 
                 <View style = {styles.container}>

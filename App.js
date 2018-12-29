@@ -16,6 +16,7 @@ export function registerScreens() {
   Navigation.registerComponentWithRedux('test.Home', () => require('./src/screens/Home/Home').default,Provider,store);
   Navigation.registerComponentWithRedux('test.SideMenu', () => require('./src/screens/SideMenu/SideMenu').default,Provider,store);
   Navigation.registerComponentWithRedux('test.ViewEmployee', () => require('./src/screens/ViewEmployee/ViewEmplyee').default,Provider,store);
+  Navigation.registerComponentWithRedux('test.AboutUs', () => require('./src/screens/AboutUs/AboutUs').default,Provider,store);
 
 
   

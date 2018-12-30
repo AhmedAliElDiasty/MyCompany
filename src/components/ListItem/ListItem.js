@@ -1,16 +1,18 @@
 import React from 'react'
 import {View  , StyleSheet , TouchableWithoutFeedback , Image} from 'react-native'
- import {Card , CardItem,Text , Thumbnail, Body} from 'native-base'
+ import {Card , CardItem,Text , Thumbnail, Body,Left , H1} from 'native-base'
 
 const listItem = (props) =>(
     <TouchableWithoutFeedback onPress = {props.onItemPressed}>
         <View  >
             <Card>
                 <CardItem>
-                    <Thumbnail source = {props.empImage} 
-                    />
+                    <Left>
+                        <Thumbnail source = {props.empImage} />
+                    </Left>
+                   
                     <Body>
-                        <Text>{props.empName}</Text>
+                        <H1>{props.empName}</H1>
                     </Body>  
                 </CardItem>
            </Card>

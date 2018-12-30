@@ -2,10 +2,10 @@ import { ADD_EMPLOYEE } from '../ActionType'
 import axios from 'axios'
 import firebase from 'react-native-firebase'
 import RNFetchBlob from 'rn-fetch-blob'
-export const addEmployee = (firstName,lastName,salary,phoneNumber,image)=>{
+// export const addEmployee = (firstName,lastName,salary,phoneNumber,image)=>{
 
-    return () =>{
-        var data = firebase.database().ref('info')
+    // return () =>{
+    //     var data = firebase.database().ref('info')
         // data.push({
         //     firstName: firstName,
         //     lastName:lastName,
@@ -63,41 +63,41 @@ export const addEmployee = (firstName,lastName,salary,phoneNumber,image)=>{
 
 
 
-        alert(image.uri);
-        RNFetchBlob.fetch('POST', 'gs://employeedata-2f958.appspot.com', {
-        //... some headers,
-        'Content-Type' : 'application/octet-stream'
-        },RNFetchBlob.wrap(image.uri))
-        // listen to upload progress event
-        .uploadProgress((written, total) => {
-            console.log('uploaded', written / total)
-        })
-        // listen to download progress event
-        .progress((received, total) => {
-            console.log('progress', received / total)
-        })
-        .then((resp) => {
-            // alert(resp)
-        })
-        .catch((err) => {
-          //  alert(err)
-            console.log(image.uri);
-        })
+        
+        // RNFetchBlob.fetch('POST', 'gs://employeedata-2f958.appspot.com', {
+        // //... some headers,
+        // 'Content-Type' : 'application/octet-stream'
+        // },RNFetchBlob.wrap(image.uri))
+        // // listen to upload progress event
+        // .uploadProgress((written, total) => {
+        //     console.log('uploaded', written / total)
+        // })
+        // // listen to download progress event
+        // .progress((received, total) => {
+        //     console.log('progress', received / total)
+        // })
+        // .then((resp) => {
+        //     // alert(resp)
+        // })
+        // .catch((err) => {
+        //   //  alert(err)
+        //     console.log(image.uri);
+        // })
 
 
-        }
+//         }
 
-}
-
-// export const addEmployee = (firstName,lastName,salary,phoneNumber,image)=>{
-//     return{
-//         type: ADD_EMPLOYEE,
-//         firstName: firstName,
-//         lastName: lastName,
-//         salary: salary,
-//         phoneNumber: phoneNumber,
-//         image: image
-//     }
 // }
+
+export const addEmployee = (firstName,lastName,salary,phoneNumber,image)=>{
+    return{
+        type: ADD_EMPLOYEE,
+        firstName: firstName,
+        lastName: lastName,
+        salary: salary,
+        phoneNumber: phoneNumber,
+        image: image
+    }
+}
 
 

@@ -35,7 +35,7 @@ class ViewEmployee extends Component{
                             />
                             <BlurView
                             blurType="light"
-                            blurAmount={5}
+                            blurAmount={1}
                             viewRef={this.state.viewRef}
                             style={styles.absolute}
                             />

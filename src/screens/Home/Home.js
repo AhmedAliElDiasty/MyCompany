@@ -40,10 +40,10 @@ class Home extends Component{
                         visible: true,
                     }
                 }
-            });
+            })
         }
         else if(buttonId === 'search'){
-            alert('hello')
+            alert("It doesn't handle yet")
         }
     }
     _handleAdd = ()=>{
@@ -71,13 +71,16 @@ class Home extends Component{
           });
       
     }
+    
 
     
     render(){
         return(
             <View style={{ flex: 1 }}>
             
-                <EmpList list = {this.props.emp} onItemSelected = {this.itemSelectedHandler}/>
+                <EmpList list = {this.props.emp}
+                 onItemSelected = {this.itemSelectedHandler}
+                 />
             
                 <Fab
                     active={this.state.active}

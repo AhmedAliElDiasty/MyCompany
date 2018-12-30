@@ -59,10 +59,9 @@ class empList extends Component{
   };
 
   renderHeader = () => {
-    return(
-      // this.state.searching ?  <SearchBar placeholder="Type Here..." lightTheme round /> : null
-      <SearchBar placeholder="Type Here..." lightTheme round />
-    )
+    // return(
+    //   <SearchBar placeholder="Type Here..." lightTheme round onChangeText = {this.props.searchText }/>
+    // )
      
     
     
@@ -111,10 +110,10 @@ class empList extends Component{
               empName = {info.item.firstName}
               empImage = {info.item.image}
               onItemPressed = {()=>{
-                  props.onItemSelected(info.item.key)}}/>
+                  this.props.onItemSelected(info.item.key)}}/>
           )} 
           ItemSeparatorComponent={this.renderSeparator}
-          ListHeaderComponent={this.renderHeader}
+          // ListHeaderComponent={this.renderHeader}
           ListFooterComponent={this.renderFooter}
           refreshing = {this.state.refreshing}
           onRefresh = {this.handleRefresh}
